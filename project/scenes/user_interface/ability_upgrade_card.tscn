@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnk4nbjd4ufgm"]
+
+[ext_resource type="Script" path="res://scenes/user_interface/ability_upgrade_card.gd" id="1_rpssc"]
+
+[node name="Ability Upgrade Card" type="PanelContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(120, 150)
+script = ExtResource("1_rpssc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Test Name"
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Some description here"
+autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

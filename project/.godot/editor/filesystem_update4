@@ -1,0 +1,6 @@
+res://scenes/manager/arena_time_manager.tscn
+res://resources/tile_set.tres
+res://scenes/manager/arena_time_manager.gd
+res://scenes/manager/enemy_manager.tscn
+res://scenes/manager/enemy_manager.gd
+res://scenes/main/main.tscn
