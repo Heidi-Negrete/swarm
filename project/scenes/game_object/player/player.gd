@@ -40,12 +40,12 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 
-func _on_collision_area_2d_body_entered(body):
+func _on_collision_area_2d_body_entered(_body):
 	number_colliding_bodies += 1
 	check_deal_damage()
 
 
-func _on_collision_area_2d_body_exited(body):
+func _on_collision_area_2d_body_exited(_body):
 	number_colliding_bodies -= 1
 
 
