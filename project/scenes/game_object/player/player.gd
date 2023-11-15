@@ -6,10 +6,13 @@ const ACCELERATION_SMOOTHING = 25
 @onready var health_bar = $HealthBar
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
+@onready var abilities = $Abilities
+
 var number_colliding_bodies = 0
 
 
 func _ready():
+	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 
 
@@ -55,4 +58,9 @@ func _on_damage_interval_timer_timeout():
 
 func _on_health_component_health_changed():
 	update_health_display()
-# STATUS debugging health display not working
+
+
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_uprades: Dictionary):
+	if ability_upgrade is Ability:
+		var ability_controller = ability_upgrade as Ability
+		abilities.add_child(ability_controller.ability_controller_scene.instantiate())
