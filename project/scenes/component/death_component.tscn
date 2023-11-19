@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gg1u5"]
@@ -76,6 +76,7 @@ _data = {
 script = ExtResource("1_vx4np")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_x58n6")
 texture = ExtResource("1_t0kgn")
