@@ -11,4 +11,5 @@ ECS
 
 # To Dos:
 
-Add VisibilityNotifier to enemy and rework spawn logic to always spawn within arena but outside camera view. (Currently enemies occasionally spawn outside of arena walls)
+Add range attack in wizard enemy type  
+Add new movement type in velocity component accelerate_to_in_range so wizard only moves toward player enough to stay in range for attack.
