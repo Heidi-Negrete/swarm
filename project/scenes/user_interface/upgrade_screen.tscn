@@ -1,12 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3s5n0yhp8se0"]
+[gd_scene load_steps=7 format=3 uid="uid://b3s5n0yhp8se0"]
 
 [ext_resource type="PackedScene" uid="uid://cnk4nbjd4ufgm" path="res://scenes/user_interface/ability_upgrade_card.tscn" id="1_3s7j2"]
 [ext_resource type="Script" path="res://scenes/user_interface/upgrade_screen.gd" id="1_pq1sm"]
+
+[sub_resource type="Animation" id="Animation_jlnj2"]
+resource_name = "in"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i3k0k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pg0h3"]
+resource_name = "out"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2iqh"]
+_data = {
+"RESET": SubResource("Animation_i3k0k"),
+"in": SubResource("Animation_jlnj2"),
+"out": SubResource("Animation_pg0h3")
+}
 
 [node name="UpgradeScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_pq1sm")
 upgrade_card_scene = ExtResource("1_3s7j2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e2iqh")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.376471, 0.164706, 0.32549)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -20,3 +89,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 8
