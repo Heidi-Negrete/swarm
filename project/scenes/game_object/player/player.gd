@@ -10,9 +10,10 @@ extends CharacterBody2D
 
 
 var number_colliding_bodies = 0
-
+var base_speed = 0
 
 func _ready():
+	base_speed = velocity_component.max_speed
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 
@@ -68,7 +69,9 @@ func _on_health_component_health_changed():
 	update_health_display()
 
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_uprades: Dictionary):
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if ability_upgrade is Ability:
 		var ability_controller = ability_upgrade as Ability
 		abilities.add_child(ability_controller.ability_controller_scene.instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
