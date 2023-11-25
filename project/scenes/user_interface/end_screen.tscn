@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjjvrv688bshi"]
+[gd_scene load_steps=4 format=3 uid="uid://cjjvrv688bshi"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/end_screen.gd" id="1_3vxpy"]
+[ext_resource type="AudioStream" uid="uid://hgkfu5fcaqrg" path="res://assets/audio/victory.ogg" id="2_aqy73"]
+[ext_resource type="AudioStream" uid="uid://b30cxoy7y5oxm" path="res://assets/audio/defeat.ogg" id="3_woggj"]
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_3vxpy")
+
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aqy73")
+volume_db = -5.0
+bus = &"sfx"
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_woggj")
+volume_db = -5.0
+bus = &"sfx"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

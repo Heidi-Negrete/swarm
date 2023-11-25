@@ -1,6 +1,8 @@
 extends Area2D
 class_name HurtboxComponent
 
+signal hit
+
 @export var health_component: Node
 
 
@@ -17,3 +19,5 @@ func on_area_entered(other_area: Area2D):
 		
 	var hitbox_component = other_area as HitboxComponent
 	health_component.damage(hitbox_component.damage)
+	
+	hit.emit()
