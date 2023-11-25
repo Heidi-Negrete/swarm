@@ -82,6 +82,7 @@ _data = {
 script = ExtResource("1_vx4np")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_mode = 3
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_x58n6")
@@ -95,5 +96,4 @@ libraries = {
 }
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("3_aiwoy")]
-max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("4_rq4qf"), ExtResource("5_xhrd0"), ExtResource("6_1q6wn"), ExtResource("7_txrvj"), ExtResource("8_854jn")])
