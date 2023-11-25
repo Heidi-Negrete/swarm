@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://2vpgtn7vy0c1"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://2vpgtn7vy0c1"]
 
 [ext_resource type="FontFile" uid="uid://c63rs6buphkks" path="res://resources/theme/TripleN.ttf" id="1_0wuwx"]
 [ext_resource type="Texture2D" uid="uid://bmqsidbjwdfmf" path="res://assets/ui/ui.png" id="1_koldm"]
@@ -23,6 +23,10 @@ texture_margin_right = 4.0
 texture_margin_bottom = 10.0
 region_rect = Rect2(0, 0, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qmav"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
 [resource]
 default_font = ExtResource("1_0wuwx")
 default_font_size = 16
@@ -31,3 +35,4 @@ AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_n6fbf")
 Label/constants/line_spacing = 0
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_myurs")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8qmav")
