@@ -1,4 +1,4 @@
-![Richard Smiley the Gladiator](./GLADIATOR.png)
+![Richard Smiley the Gladiator](./gladiator.png)
 
 # Richard Smiley the Gladiator
 
