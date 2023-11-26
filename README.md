@@ -1,7 +1,5 @@
 ![Richard Smiley the Gladiator](./gladiator.png)
 
-# Richard Smiley the Gladiator
-
 Richard Smiley the Gladiator is a 2D Survival arena where you must survive ever-increasing waves of enemies while collecting experience to powerup and gain new abilities!
 ![gameplay](./gladiator_gameplay.png)
 
