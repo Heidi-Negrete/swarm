@@ -3,7 +3,7 @@
 Richard Smiley the Gladiator is a 2D Survival arena where you must survive ever-increasing waves of enemies while collecting experience to powerup and gain new abilities!
 ![gameplay](./gladiator_gameplay.png)
 
-### Click [here](https://heidi-negrete.github.io/swarm/) to play
+### Click [here](https://heidi-negrete.github.io/the-gladiator/) to play
 
 # Project Notes
 
