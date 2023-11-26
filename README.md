@@ -1,7 +1,9 @@
+![Richard Smiley the Gladiator](./GLADIATOR.png)
+
 # Richard Smiley the Gladiator
 
 Richard Smiley the Gladiator is a 2D Survival arena where you must survive ever-increasing waves of enemies while collecting experience to powerup and gain new abilities!
-![Richard Smiley the Gladiator](./swarm.png)
+![gameplay](./gladiator_gameplay.png)
 
 ### Click [here](https://heidi-negrete.github.io/swarm/) to play
 
