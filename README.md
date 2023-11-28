@@ -1,23 +1,22 @@
-![Richard Smiley the Gladiator](./gladiator.png)
+<img src="./gladiator.png" alt="Richard Smiley the Gladiator" width="720" >
 
-Richard Smiley the Gladiator is a 2D Survival arena where you must survive ever-increasing waves of enemies while collecting experience to powerup and gain new abilities!
-![gameplay](./gladiator_gameplay.png)
+### Richard Smiley the Gladiator is a 2D Survival arena where you must survive ever-increasing waves of enemies while collecting experience to powerup and gain new abilities!
+
+<img src="./gladiator_gameplay.png" alt="gameplay" width="360" ><img src="./wip.png" alt="wip" width="360" >
 
 ### Click [here](https://heidi-negrete.github.io/the-gladiator/) to play
 
-# Project Notes
+## Project Notes
 
-ECS
+My goal for this project was to explore using components vs inheritance in my high-level structure.
 
-# To Dos:
+## Future Features:
 
-Bugfix: in web build options_menu does not update label with WINDOW_MODE  
-Bugfix: mobs can still get stuck in upper limits of tilemap
-Bugfix: axe's are spawning exponentially faster over course of game (also tune to slower base rate)
+- Rework wizard enemy type with ranged attack
+- Add new movement type in velocity component accelerate_to_in_range so ranged enemies only move toward player enough to stay in range for attack.
+- Add floating damage text
 
-Add range attack in wizard enemy type  
-Add new movement type in velocity component accelerate_to_in_range so wizard only moves toward player enough to stay in range for attack.  
-Fix xp, currently anything above what is needed to lvl is lost and not used.
-Add floating damage text?
+## Bugs:
 
-Update this README with up-to-date screenshots of gameplay
+:bug:  
+See Issues for currently tracked bugs and create new Issue as needed.
