@@ -45,9 +45,10 @@ func get_spawn_position():
 		
 	var spawn_position = Vector2.ZERO
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	var enemy_collision_offset = 20 * random_direction #20 is enough to account for current collision shapes in game w radius of up to 10px
 	for i in 4:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
+		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + enemy_collision_offset, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 
 		if result.is_empty():
