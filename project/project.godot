@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="swarm"
+config/name="the gladiator"
 run/main_scene="res://scenes/user_interface/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
