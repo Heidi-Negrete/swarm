@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://1wy5v2wjtam3"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c1q4b1hcmblfm"]
 
-[ext_resource type="PackedScene" uid="uid://dla37uq281lc5" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_fvwc5"]
-[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_l40fr"]
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_a7t6o"]
 
 [resource]
-script = ExtResource("2_l40fr")
-ability_controller_scene = ExtResource("1_fvwc5")
+script = ExtResource("1_a7t6o")
 id = "player_speed"
 max_quantity = 2
 name = "Move Speed"
