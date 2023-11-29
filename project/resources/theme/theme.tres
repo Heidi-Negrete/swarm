@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c63rs6buphkks" path="res://resources/theme/TripleN.ttf" id="1_0wuwx"]
 [ext_resource type="Texture2D" uid="uid://bmqsidbjwdfmf" path="res://assets/ui/ui.png" id="1_koldm"]
-[ext_resource type="Texture2D" uid="uid://58d07a4toyg1" path="res://art_bucket_remove_later/Tiles/tile_0061.png" id="2_immhv"]
+[ext_resource type="Texture2D" uid="uid://v8ul5hg87cxp" path="res://assets/ui/slide_grabber.png" id="2_mdqye"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6fbf"]
 content_margin_left = 4.0
@@ -151,8 +151,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_13rch")
 Button/styles/hover = SubResource("StyleBoxTexture_yd8hc")
 Button/styles/normal = SubResource("StyleBoxTexture_ux8a2")
 Button/styles/pressed = SubResource("StyleBoxTexture_unqya")
-HSlider/icons/grabber = ExtResource("2_immhv")
-HSlider/icons/grabber_highlight = ExtResource("2_immhv")
+HSlider/icons/grabber = ExtResource("2_mdqye")
+HSlider/icons/grabber_highlight = ExtResource("2_mdqye")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6mlrh")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_2sk0a")
 HSlider/styles/slider = SubResource("StyleBoxFlat_tguvo")
