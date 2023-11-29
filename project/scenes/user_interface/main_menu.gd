@@ -26,3 +26,9 @@ func _on_quit_button_pressed():
 
 func on_options_closed(options_instance: Node):
 	options_instance.queue_free()
+
+
+func _on_upgrades_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	get_tree().change_scene_to_file("res://scenes/user_interface/meta_menu.tscn")

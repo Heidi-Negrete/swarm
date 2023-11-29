@@ -100,7 +100,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.247059, 0.14902, 0.192157, 0)
 
-[node name="MetaUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
+[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card", "upgrade_card"]]
 process_mode = 3
 custom_minimum_size = Vector2(170, 0)
 pivot_offset = Vector2(75, 75)
@@ -159,7 +159,7 @@ mouse_filter = 2
 texture = ExtResource("13_bioei")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"BlueOutlineLabel"
@@ -177,5 +177,10 @@ show_percentage = false
 layout_mode = 2
 text = "Purchase"
 
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradesAppliedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+text = "Upgrades Applied: 0"
