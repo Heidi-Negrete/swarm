@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://2vpgtn7vy0c1"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://2vpgtn7vy0c1"]
 
 [ext_resource type="FontFile" uid="uid://c63rs6buphkks" path="res://resources/theme/TripleN.ttf" id="1_0wuwx"]
 [ext_resource type="Texture2D" uid="uid://bmqsidbjwdfmf" path="res://assets/ui/ui.png" id="1_koldm"]
@@ -78,12 +78,65 @@ region_rect = Rect2(0, 0, 16, 16)
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3ohg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.996078, 0.682353, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn3tg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.996078, 0.682353, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfr6y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.996078, 0.682353, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwa6w"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi2yi"]
+bg_color = Color(0.996078, 0.682353, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [resource]
 default_font = ExtResource("1_0wuwx")
 default_font_size = 16
 AlternateLabel/base_type = &"Label"
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_n6fbf")
+AlternateVScrollBar/base_type = &"VScrollBar"
 BlueOutlineLabel/base_type = &"Label"
 BlueOutlineLabel/colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 BlueOutlineLabel/colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -106,3 +159,8 @@ HSlider/styles/slider = SubResource("StyleBoxFlat_tguvo")
 Label/constants/line_spacing = 0
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_myurs")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_8qmav")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_b3ohg")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_xn3tg")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_qfr6y")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_mwa6w")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_wi2yi")
