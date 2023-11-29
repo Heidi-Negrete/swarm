@@ -12,7 +12,6 @@ var upgrade: MetaUpgrade
 func _ready():
 	purchase_button.pressed.connect(on_purchase_pressed)
 
-
 func set_meta_upgrade(upgrade: MetaUpgrade):
 	self.upgrade = upgrade
 	name_label.text = upgrade.title
@@ -22,7 +21,7 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 func update_progress():
 	var current_quantity = 0
-	if MetaProgression.save_data["meta_upgrades"].has([upgrade.id]):
+	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
 		current_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
 	var is_maxed = current_quantity >= upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
@@ -33,8 +32,9 @@ func update_progress():
 	if is_maxed:
 		purchase_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(upgrade.experience_cost)
-	upgrades_applied_label.text = "Upgrades Applied:%d " % current_quantity
-
+	upgrades_applied_label.text = "Upgrades Applied: " + str(current_quantity)
+	print('updated.')
+	# not getting current_quantity correct
 
 func on_purchase_pressed():
 	if upgrade == null:

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://clihp56hepafs"]
+[gd_scene load_steps=5 format=3 uid="uid://clihp56hepafs"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/meta_menu.gd" id="1_l38il"]
 [ext_resource type="Resource" uid="uid://bp7xek16yavrd" path="res://resources/meta_upgrades/experience_gain.tres" id="2_otbt2"]
 [ext_resource type="TileSet" uid="uid://bu6t2f3c06o87" path="res://resources/tile_set.tres" id="2_sprq2"]
 [ext_resource type="PackedScene" uid="uid://cubne56e2iung" path="res://scenes/user_interface/vignette.tscn" id="3_f7ehk"]
-[ext_resource type="PackedScene" uid="uid://cakwy6p7f2ykn" path="res://scenes/user_interface/meta_upgrade_card.tscn" id="5_6chk0"]
 
 [node name="MetaMenu" type="CanvasLayer"]
 layer = 2
@@ -37,18 +36,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/h_separation = 41
 columns = 2
-
-[node name="MetaUpgradeCard" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("5_6chk0")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard2" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("5_6chk0")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard3" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("5_6chk0")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard4" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("5_6chk0")]
-layout_mode = 2
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 0)

@@ -100,7 +100,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.247059, 0.14902, 0.192157, 0)
 
-[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card", "upgrade_card"]]
+[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
 process_mode = 3
 custom_minimum_size = Vector2(170, 0)
 pivot_offset = Vector2(75, 75)
