@@ -3,6 +3,9 @@ extends Node
 const SAVE_FILE_PATH = "user://gladiator.save"
 
 var save_data: Dictionary = {
+	"sfx": 1.0, # sfx volume percent
+	"music": 1.0, # sfx volume percent
+	"fullscreen": true,
 	"meta_upgrade_currency": 0,
 	"meta_upgrades": {}
 }
@@ -11,6 +14,11 @@ var save_data: Dictionary = {
 func _ready():
 	GameEvents.experience_vial_collected.connect(on_experience_collected)
 	load_save_file()
+	if !save_data["fullscreen"]:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 func load_save_file():
