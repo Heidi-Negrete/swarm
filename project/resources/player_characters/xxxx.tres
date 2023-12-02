@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=3 format=3 uid="uid://bmsn3c0rlm0g1"]
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=2 format=3 uid="uid://bmsn3c0rlm0g1"]
 
 [ext_resource type="Script" path="res://resources/player_characters/player_resource.gd" id="1_26fft"]
-[ext_resource type="Texture2D" uid="uid://8nvohgve18u6" path="res://scenes/game_object/player/joan.png" id="2_lru04"]
 
 [resource]
 script = ExtResource("1_26fft")
 id = "xxxx"
 full_name = "xxXmomXxx"
-sprite = ExtResource("2_lru04")
+sprite_path = "res://scenes/game_object/player/joan.png"

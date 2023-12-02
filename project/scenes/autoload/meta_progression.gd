@@ -24,7 +24,7 @@ func load_save_file():
 		return
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
-	save_data["character"] = load("res://resources/player_characters/%s.tres" % save_data["character"]["id"])
+
 
 func save():
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)

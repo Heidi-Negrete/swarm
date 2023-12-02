@@ -15,7 +15,7 @@ var base_speed = 0
 func _ready():
 	base_speed = velocity_component.max_speed
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-	sprite_2d.texture = character["sprite"]
+	sprite_2d.texture = load(character["sprite_path"])
 	update_health_display()
 
 

@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=3 format=3 uid="uid://c83eyvic4xgkp"]
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=2 format=3 uid="uid://c83eyvic4xgkp"]
 
 [ext_resource type="Script" path="res://resources/player_characters/player_resource.gd" id="1_87scs"]
-[ext_resource type="Texture2D" uid="uid://bge88lg4ifx5r" path="res://scenes/game_object/player/jesse.png" id="2_exnox"]
 
 [resource]
 script = ExtResource("1_87scs")
 id = "jesse"
 full_name = "Jesse"
-sprite = ExtResource("2_exnox")
+sprite_path = "res://scenes/game_object/player/jesse.png"

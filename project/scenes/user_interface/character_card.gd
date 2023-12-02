@@ -19,7 +19,7 @@ func play_discard():
 
 func set_character(character: PlayerCharacter):
 	name_label.text = character.full_name
-	character_image.texture = character.sprite
+	character_image.texture = load(character.sprite_path)
 
 
 func select_card():
