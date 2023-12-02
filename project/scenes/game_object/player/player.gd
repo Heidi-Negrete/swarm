@@ -7,14 +7,15 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
 @onready var velocity_component = $VelocityComponent
-
-
+@onready var sprite_2d = $Visuals/Sprite2D
+@onready var character = MetaProgression.save_data["character"]
 var number_colliding_bodies = 0
 var base_speed = 0
 
 func _ready():
 	base_speed = velocity_component.max_speed
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	sprite_2d.texture = character["sprite"]
 	update_health_display()
 
 

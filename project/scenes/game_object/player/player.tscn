@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cq3ir5u82bhyk"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_0aune"]
-[ext_resource type="Texture2D" uid="uid://dk7lp3sks48a" path="res://scenes/game_object/player/player.png" id="1_gn467"]
+[ext_resource type="Texture2D" uid="uid://dk7lp3sks48a" path="res://scenes/game_object/player/richard.png" id="1_gn467"]
 [ext_resource type="PackedScene" uid="uid://dshayj7f3jqbb" path="res://scenes/component/health_component.tscn" id="2_5wval"]
 [ext_resource type="PackedScene" uid="uid://c5v6bjcmd32kg" path="res://scenes/component/velocity_component.tscn" id="2_7cj6m"]
 [ext_resource type="PackedScene" uid="uid://boyutrxauu3rv" path="res://scenes/component/random_stream_player_2d_component.tscn" id="2_pr1qx"]

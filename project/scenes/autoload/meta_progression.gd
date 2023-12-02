@@ -3,6 +3,7 @@ extends Node
 const SAVE_FILE_PATH = "user://gladiator.save"
 
 var save_data: Dictionary = {
+	"character": null,
 	"sfx": 1.0, # sfx volume percent
 	"music": 1.0, # sfx volume percent
 	"fullscreen": true,
@@ -17,16 +18,13 @@ func _ready():
 	if !save_data["fullscreen"]:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-
 
 func load_save_file():
 	if !FileAccess.file_exists(SAVE_FILE_PATH):
 		return
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
-
+	save_data["character"] = load("res://resources/player_characters/%s.tres" % save_data["character"]["id"])
 
 func save():
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)

@@ -1,0 +1,46 @@
+extends PanelContainer
+
+signal char_selected
+
+@onready var name_label = $MarginContainer/VBoxContainer/PanelContainer/NameLabel
+@onready var character_image = $MarginContainer/VBoxContainer/MarginContainer/CharacterImage
+
+var disabled = false
+
+func play_in(delay: float = 0):
+	modulate = Color.TRANSPARENT
+	await get_tree().create_timer(delay).timeout
+	$AnimationPlayer.play("in")
+
+
+func play_discard():
+	$AnimationPlayer.play("discard")
+
+
+func set_character(character: PlayerCharacter):
+	name_label.text = character.full_name
+	character_image.texture = character.sprite
+
+
+func select_card():
+	disabled = true
+	$AnimationPlayer.play("selected")
+	for other_card in get_tree().get_nodes_in_group("upgrade_card"):
+		if other_card == self:
+			continue
+		other_card.play_discard()
+	await $AnimationPlayer.animation_finished
+	char_selected.emit()
+
+
+func _on_gui_input(event):
+	if disabled:
+		return
+	if event.is_action_pressed("left_click"):
+		select_card()
+
+
+func _on_mouse_entered():
+	if disabled:
+		return
+	$HoverAnimationPlayer.play("hover")

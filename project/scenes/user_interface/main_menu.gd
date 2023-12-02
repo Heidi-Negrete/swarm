@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var options_scene = preload("res://scenes/user_interface/options_menu.tscn")
 
+
 func _ready():
 	pass
 
@@ -9,7 +10,10 @@ func _ready():
 func _on_play_button_pressed():
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	if !MetaProgression.save_data["character"] == null:
+		get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/user_interface/character_menu.tscn")
 
 
 func _on_options_button_pressed():

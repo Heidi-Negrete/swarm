@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk7lp3sks48a"
-path="res://.godot/imported/player.png-45a613f735d2cef2659ec742d7201055.ctex"
+uid="uid://fs3oyvb6rnoh"
+path="res://.godot/imported/cinnamon.png-7ad77085fd16bbe4b5b4044ad521c29a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/player.png"
-dest_files=["res://.godot/imported/player.png-45a613f735d2cef2659ec742d7201055.ctex"]
+source_file="res://scenes/game_object/player/cinnamon.png"
+dest_files=["res://.godot/imported/cinnamon.png-7ad77085fd16bbe4b5b4044ad521c29a.ctex"]
 
 [params]
 

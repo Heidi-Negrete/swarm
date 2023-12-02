@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=3 format=3 uid="uid://ce7uyk3wbfpol"]
+
+[ext_resource type="Script" path="res://resources/player_characters/player_resource.gd" id="1_bj8gk"]
+[ext_resource type="Texture2D" uid="uid://fs3oyvb6rnoh" path="res://scenes/game_object/player/cinnamon.png" id="2_nj4lt"]
+
+[resource]
+script = ExtResource("1_bj8gk")
+id = "cinnamon"
+full_name = "Cinnamon"
+sprite = ExtResource("2_nj4lt")
