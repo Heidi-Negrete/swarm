@@ -145,7 +145,7 @@ autoplay = "walk"
 streams = Array[AudioStream]([ExtResource("3_3aafi"), ExtResource("4_5rvtj"), ExtResource("5_c0mo7"), ExtResource("6_pqg5k"), ExtResource("7_spjec")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_m8fnd")]
-max_health = 30.0
+max_health = 20.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_8y5y6")]
 max_speed = 60

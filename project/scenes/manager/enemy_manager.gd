@@ -4,6 +4,7 @@ const SPAWN_RADIUS = 350 # viewport width is 640, use radius circle of 320 + a l
 
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
+@export var ghost_enemy_scene: PackedScene
 @export var arena_time_manager: Node
 
 var base_spawn_time = 0
@@ -33,7 +34,10 @@ func _on_arena_time_manager_arena_difficulty_increased(arena_difficulty):
 	time_off = min(time_off, .7)
 	$Timer.wait_time = base_spawn_time - time_off
 	
-	if arena_difficulty == 6:
+	if arena_difficulty == 3:
+		enemy_table.add_item(ghost_enemy_scene, 5)
+	
+	elif arena_difficulty == 6:
 		enemy_table.add_item(wizard_enemy_scene, 10)
 
 
