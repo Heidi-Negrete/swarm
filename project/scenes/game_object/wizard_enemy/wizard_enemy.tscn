@@ -136,13 +136,12 @@ collision_mask = 9
 script = ExtResource("1_yel5v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_jx1hu")
 }
+autoplay = "walk"
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_jxvxo")]
-max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("3_3aafi"), ExtResource("4_5rvtj"), ExtResource("5_c0mo7"), ExtResource("6_pqg5k"), ExtResource("7_spjec")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_m8fnd")]
@@ -167,8 +166,8 @@ sprite = NodePath("../Visuals/Sprite2D")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-position = Vector2(0, -1.27053)
-scale = Vector2(0.990785, 1)
+position = Vector2(0, 1.2619)
+scale = Vector2(0.805556, 1)
 texture = ExtResource("2_36eq0")
 offset = Vector2(0, -8)
 
@@ -184,3 +183,9 @@ shape = SubResource("CircleShape2D_7b1af")
 visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_xlx7c")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

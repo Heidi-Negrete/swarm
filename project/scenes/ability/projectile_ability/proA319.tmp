@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3ksps6gaxsrm"]
+
+[ext_resource type="Script" path="res://scenes/ability/projectile_ability/projectile_ability.gd" id="1_7o10g"]
+[ext_resource type="PackedScene" uid="uid://csgitbiu5e2aw" path="res://scenes/component/hitbox_component.tscn" id="2_48w1h"]
+[ext_resource type="Shader" path="res://scenes/ability/projectile_ability/projectile_ability.gdshader" id="3_18guv"]
+[ext_resource type="Texture2D" uid="uid://c7lul8rip8cqq" path="res://scenes/ability/projectile_ability/projectile.png" id="3_ei1hm"]
+
+[sub_resource type="Animation" id="Animation_7uqty"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/strength")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.9]
+}
+
+[sub_resource type="Animation" id="Animation_utsmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cri6w"]
+_data = {
+"RESET": SubResource("Animation_utsmv"),
+"default": SubResource("Animation_7uqty")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfcag"]
+radius = 0.9993
+height = 6.0
+
+[sub_resource type="Gradient" id="Gradient_xnmh5"]
+offsets = PackedFloat32Array(0, 0.97541, 0.983607, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.606063, 0.0157958, 0.337238, 1, 0.458052, 0.458052, 0.458052, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e0uaa"]
+seed = 6
+frequency = 0.005
+fractal_type = 2
+fractal_octaves = 6
+fractal_lacunarity = 1.0
+fractal_gain = 0.1
+domain_warp_type = 1
+domain_warp_frequency = 1.0
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4n4p0"]
+width = 612
+height = 612
+seamless = true
+seamless_blend_skirt = 1.0
+bump_strength = 4.2
+color_ramp = SubResource("Gradient_xnmh5")
+noise = SubResource("FastNoiseLite_e0uaa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dv6j2"]
+shader = ExtResource("3_18guv")
+shader_parameter/strength = 0.9
+shader_parameter/direction = Vector2(0.05, 0)
+shader_parameter/color1 = Color(0.92549, 0, 0, 1)
+shader_parameter/color2 = Color(1, 0.560784, 0.145098, 1)
+shader_parameter/flowMap = SubResource("NoiseTexture2D_4n4p0")
+
+[node name="ProjectileAbility" type="Node2D"]
+script = ExtResource("1_7o10g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cri6w")
+}
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_48w1h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+rotation = -1.5715
+shape = SubResource("CapsuleShape2D_gfcag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dv6j2")
+rotation = 1.5708
+texture = ExtResource("3_ei1hm")

@@ -2,6 +2,7 @@ extends Node
 
 @export var max_speed: int = 40
 @export var acceleration: float = 5
+@export var max_range: int = 150
 
 var velocity = Vector2.ZERO
 
@@ -18,6 +19,21 @@ func accelerate_to_player():
 	var direction = (player.global_position - owner_node2d.global_position).normalized()
 	accelerate_in_direction(direction)
 
+
+func accelerate_to_in_range():
+	var owner_node2d = owner as Node2D
+	if owner_node2d == null:
+		return
+	
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return
+	
+	var direction = (player.global_position - owner_node2d.global_position).normalized()
+	if owner_node2d.global_position.distance_to(player.global_position) >= max_range:
+		accelerate_in_direction(direction)
+	else:
+		owner_node2d.in_range = true
 
 func accelerate_in_direction(direction: Vector2):
 	var desired_velocity = direction * max_speed

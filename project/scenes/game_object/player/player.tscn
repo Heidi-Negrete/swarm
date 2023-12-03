@@ -126,7 +126,7 @@ radius = 7.0
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 0
+collision_layer = 64
 motion_mode = 1
 script = ExtResource("1_0aune")
 
@@ -188,19 +188,20 @@ offset = Vector2(0, -8)
 [node name="CollisionArea2D" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, -2)
-collision_layer = 0
-collision_mask = 8
+collision_layer = 64
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_nloqt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_pyhhq")
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="timeout" from="DamageIntervalTimer" to="." method="_on_damage_interval_timer_timeout"]
+[connection signal="area_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_entered"]
+[connection signal="area_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_exited"]
 [connection signal="body_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_entered"]
 [connection signal="body_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_exited"]

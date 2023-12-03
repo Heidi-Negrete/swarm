@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://d3ksps6gaxsrm"]
+
+[ext_resource type="Script" path="res://scenes/ability/projectile_ability/projectile_ability.gd" id="1_7o10g"]
+[ext_resource type="PackedScene" uid="uid://csgitbiu5e2aw" path="res://scenes/component/hitbox_component.tscn" id="2_48w1h"]
+[ext_resource type="Texture2D" uid="uid://crb2n5x72ahaa" path="res://scenes/ability/projectile_ability/projectile.png" id="3_ei1hm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfcag"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p31oo"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fex2i"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgvk2"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koeie"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8osur"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrtmo"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys63n"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io56n"]
+atlas = ExtResource("3_ei1hm")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e8sd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p31oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fex2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgvk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koeie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8osur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrtmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys63n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io56n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ProjectileAbility" type="Node2D"]
+script = ExtResource("1_7o10g")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_48w1h")]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 1)
+rotation = -1.5715
+shape = SubResource("CapsuleShape2D_gfcag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4e8sd")
+frame_progress = 0.265795
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2(0, 1)
+rotation = -1.5715
+shape = SubResource("CapsuleShape2D_gfcag")
+
+[connection signal="body_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_entered"]

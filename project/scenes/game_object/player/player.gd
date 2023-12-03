@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var character = MetaProgression.save_data["character"]
 var number_colliding_bodies = 0
 var base_speed = 0
+var last_received_damage = 0
 
 func _ready():
 	base_speed = velocity_component.max_speed
@@ -19,7 +20,7 @@ func _ready():
 	update_health_display()
 
 
-func _process(delta):
+func _process(_delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	velocity_component.accelerate_in_direction(direction)
@@ -42,10 +43,11 @@ func get_movement_vector():
 	return Vector2(x_movement, y_movement)
 
 
-func check_deal_damage():
+func check_deal_damage(damage: int):
+	last_received_damage = damage
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
-	health_component.damage(1)
+	health_component.damage(damage)
 	damage_interval_timer.start()
 
 
@@ -53,9 +55,9 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 
-func _on_collision_area_2d_body_entered(_body):
+func _on_collision_area_2d_body_entered(body):
 	number_colliding_bodies += 1
-	check_deal_damage()
+	check_deal_damage(body.damage)
 
 
 func _on_collision_area_2d_body_exited(_body):
@@ -63,7 +65,7 @@ func _on_collision_area_2d_body_exited(_body):
 
 
 func _on_damage_interval_timer_timeout():
-	check_deal_damage()
+	check_deal_damage(last_received_damage)
 
 
 func _on_health_component_health_changed():
@@ -78,3 +80,12 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 		abilities.add_child(ability_controller.ability_controller_scene.instantiate())
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
+
+
+func _on_collision_area_2d_area_entered(area):
+	number_colliding_bodies += 1
+	check_deal_damage(area.damage)
+
+
+func _on_collision_area_2d_area_exited(_area):
+	number_colliding_bodies -= 1

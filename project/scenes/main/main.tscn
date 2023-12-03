@@ -51,4 +51,6 @@ position = Vector2(302, 188)
 
 [node name="Foreground" type="Node" parent="." groups=["foreground_layer"]]
 
+[node name="Projectiles" type="Node" parent="." groups=["projectile_layer"]]
+
 [connection signal="arena_difficulty_increased" from="ArenaTimeManager" to="EnemyManager" method="_on_arena_time_manager_arena_difficulty_increased"]
