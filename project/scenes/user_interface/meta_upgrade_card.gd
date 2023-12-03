@@ -33,8 +33,7 @@ func update_progress():
 		purchase_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(upgrade.experience_cost)
 	upgrades_applied_label.text = "Upgrades Applied: " + str(current_quantity)
-	print('updated.')
-	# not getting current_quantity correct
+
 
 func on_purchase_pressed():
 	if upgrade == null:

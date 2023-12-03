@@ -46,10 +46,12 @@ text = "Back"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 24
@@ -59,6 +61,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/h_separation = 41
 columns = 2
 
