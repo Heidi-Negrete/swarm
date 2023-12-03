@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@export var arena_time_manager: Node
+
+@onready var heal_animation = $HealAnimation
 @onready var health_bar = $HealthBar
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
@@ -14,6 +17,8 @@ var base_speed = 0
 var last_received_damage = 0
 
 func _ready():
+	heal_animation.hide()
+	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	sprite_2d.texture = load(character["sprite_path"])
@@ -68,7 +73,7 @@ func _on_damage_interval_timer_timeout():
 	check_deal_damage(last_received_damage)
 
 
-func _on_health_component_health_changed():
+func _on_health_component_health_decreased():
 	GameEvents.emit_player_damage()
 	update_health_display()
 	$HitRandomStreamPlayer.play_random()
@@ -89,3 +94,20 @@ func _on_collision_area_2d_area_entered(area):
 
 func _on_collision_area_2d_area_exited(_area):
 	number_colliding_bodies -= 1
+
+
+func on_arena_difficulty_increased(difficulty: int):
+	var health_regeneration_quantity = MetaProgression.get_upgrade_count("health_regen")
+	if health_regeneration_quantity > 0:
+		var is_thirty_second_interval = (difficulty % 6) == 0
+		if is_thirty_second_interval:
+			health_component.heal(health_regeneration_quantity)
+
+
+func _on_health_component_health_increased():
+	update_health_display()
+	heal_animation.show()
+	heal_animation.play("default")
+	await heal_animation.animation_finished
+	heal_animation.stop()
+	heal_animation.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cq3ir5u82bhyk"]
+[gd_scene load_steps=29 format=3 uid="uid://cq3ir5u82bhyk"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_0aune"]
 [ext_resource type="Texture2D" uid="uid://dk7lp3sks48a" path="res://scenes/game_object/player/richard.png" id="1_gn467"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://chob64pqkly3n" path="res://assets/audio/impactMining_002.ogg" id="5_76qe6"]
 [ext_resource type="AudioStream" uid="uid://cnsprl3nnqhwb" path="res://assets/audio/impactMining_003.ogg" id="6_b8lvt"]
 [ext_resource type="AudioStream" uid="uid://hxu1rrowfiyv" path="res://assets/audio/impactMining_004.ogg" id="7_a8v34"]
+[ext_resource type="Texture2D" uid="uid://8md3idjg3as2" path="res://scenes/game_object/player/heal.png" id="14_ojkwk"]
 
 [sub_resource type="Animation" id="Animation_dv3m0"]
 length = 0.001
@@ -99,6 +100,42 @@ _data = {
 "walk": SubResource("Animation_yff7g")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct71q"]
+atlas = ExtResource("14_ojkwk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavto"]
+atlas = ExtResource("14_ojkwk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb63k"]
+atlas = ExtResource("14_ojkwk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6sje"]
+atlas = ExtResource("14_ojkwk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xxkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct71q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xavto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb63k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6sje")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_opwfu"]
 resource_local_to_scene = true
 shader = ExtResource("4_s1i5b")
@@ -134,6 +171,12 @@ script = ExtResource("1_0aune")
 libraries = {
 "": SubResource("AnimationLibrary_1ko5t")
 }
+
+[node name="HealAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(23, -20)
+sprite_frames = SubResource("SpriteFrames_1xxkw")
+frame = 3
+frame_progress = 1.0
 
 [node name="HitRandomStreamPlayer" parent="." instance=ExtResource("2_pr1qx")]
 streams = Array[AudioStream]([ExtResource("3_pdltg"), ExtResource("4_awv8h"), ExtResource("5_76qe6"), ExtResource("6_b8lvt"), ExtResource("7_a8v34")])
@@ -199,7 +242,8 @@ shape = SubResource("CircleShape2D_nloqt")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_pyhhq")
 
-[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_decreased" from="HealthComponent" to="." method="_on_health_component_health_decreased"]
+[connection signal="health_increased" from="HealthComponent" to="." method="_on_health_component_health_increased"]
 [connection signal="timeout" from="DamageIntervalTimer" to="." method="_on_damage_interval_timer_timeout"]
 [connection signal="area_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_entered"]
 [connection signal="area_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_exited"]
