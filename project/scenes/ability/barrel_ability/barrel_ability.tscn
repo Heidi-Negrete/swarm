@@ -1,0 +1,219 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpl5lte7botrg"]
+
+[ext_resource type="Texture2D" uid="uid://dq520uluvtfuy" path="res://scenes/ability/barrel_ability/barrel.png" id="1_m0v3r"]
+[ext_resource type="Script" path="res://scenes/ability/barrel_ability/barrel_ability.gd" id="1_qkoxu"]
+[ext_resource type="PackedScene" uid="uid://csgitbiu5e2aw" path="res://scenes/component/hitbox_component.tscn" id="2_g2him"]
+[ext_resource type="Texture2D" uid="uid://devu860ge6ma6" path="res://assets/particle.png" id="4_5lbmm"]
+
+[sub_resource type="Gradient" id="Gradient_kxdif"]
+offsets = PackedFloat32Array(0, 0.606557)
+colors = PackedColorArray(0.262745, 0.262745, 0.262745, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_itbjg"]
+gradient = SubResource("Gradient_kxdif")
+
+[sub_resource type="Curve" id="Curve_o1ghs"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.146667, 1), 0.0, 0.0, 0, 0, Vector2(0.706667, 0.956044), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2qthw"]
+curve = SubResource("Curve_o1ghs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_coukv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+damping_min = 600.0
+damping_max = 750.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_2qthw")
+color_initial_ramp = SubResource("GradientTexture1D_itbjg")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pegx"]
+radius = 17.0225
+height = 37.9825
+
+[sub_resource type="Animation" id="Animation_hk32m"]
+resource_name = "default"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 3.24901, 0.784585, 1),
+"update": 0,
+"values": [Vector2(0, -96), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 0.392292),
+"update": 0,
+"values": [0.0, 0.0, 0.253073]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_m3ets"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ias7y"]
+_data = {
+"RESET": SubResource("Animation_m3ets"),
+"default": SubResource("Animation_hk32m")
+}
+
+[node name="BarrelAbility" type="Node2D"]
+script = ExtResource("1_qkoxu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_coukv")
+texture = ExtResource("4_5lbmm")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 0
+interpolate = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m0v3r")
+offset = Vector2(0, -7)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_g2him")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1, -6)
+rotation = -1.54041
+shape = SubResource("CapsuleShape2D_5pegx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ias7y")
+}
+autoplay = "default"
