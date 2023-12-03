@@ -46,7 +46,6 @@ text = "Back"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
