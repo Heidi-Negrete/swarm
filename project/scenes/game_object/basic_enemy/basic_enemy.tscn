@@ -95,13 +95,12 @@ motion_mode = 1
 script = ExtResource("1_ne3t1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_6wc71")
 }
+autoplay = "walk"
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("10_3530b")]
-max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("10_a7v1i"), ExtResource("12_v2cf1"), ExtResource("13_vbs5q"), ExtResource("14_vsllk"), ExtResource("15_4grkh")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_gmdeg")]

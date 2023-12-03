@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var velocity_component = $VelocityComponent
 @onready var hurtbox_component = $HurtboxComponent
 
+var damage = 1
+
 func _ready():
 	hurtbox_component.hit.connect(on_hit)
 
