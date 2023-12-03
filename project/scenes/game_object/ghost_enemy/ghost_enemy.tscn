@@ -1,0 +1,143 @@
+[gd_scene load_steps=22 format=3 uid="uid://cepy8yjdip53m"]
+
+[ext_resource type="Script" path="res://scenes/game_object/ghost_enemy/ghost_enemy.gd" id="1_6dvmi"]
+[ext_resource type="PackedScene" uid="uid://boyutrxauu3rv" path="res://scenes/component/random_stream_player_2d_component.tscn" id="2_4bvur"]
+[ext_resource type="AudioStream" uid="uid://b676lxfyy7wxm" path="res://assets/audio/footstep_carpet_000.ogg" id="3_ilswg"]
+[ext_resource type="AudioStream" uid="uid://b30sf4pup3nu" path="res://assets/audio/footstep_carpet_001.ogg" id="4_pmek3"]
+[ext_resource type="AudioStream" uid="uid://idsauu7ewx0o" path="res://assets/audio/footstep_carpet_002.ogg" id="5_pi2cf"]
+[ext_resource type="AudioStream" uid="uid://bgldoxf6gtusm" path="res://assets/audio/footstep_carpet_003.ogg" id="6_y76ba"]
+[ext_resource type="AudioStream" uid="uid://dlddx15kf5feg" path="res://assets/audio/footstep_carpet_004.ogg" id="7_8aqhx"]
+[ext_resource type="PackedScene" uid="uid://dshayj7f3jqbb" path="res://scenes/component/health_component.tscn" id="8_bo584"]
+[ext_resource type="PackedScene" uid="uid://cgamjkbulixwk" path="res://scenes/component/vial_drop_component.tscn" id="9_t5a32"]
+[ext_resource type="PackedScene" uid="uid://c5v6bjcmd32kg" path="res://scenes/component/velocity_component.tscn" id="10_vdxwq"]
+[ext_resource type="PackedScene" uid="uid://cyj7mdiffvk1r" path="res://scenes/component/hit_flash_component.tscn" id="11_e0oab"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="12_xs2oi"]
+[ext_resource type="PackedScene" uid="uid://78sorf7jikcj" path="res://scenes/component/death_component.tscn" id="13_6pnhl"]
+[ext_resource type="Texture2D" uid="uid://c88ircw7ljyxj" path="res://scenes/game_object/ghost_enemy/ghost.png" id="14_x076f"]
+[ext_resource type="PackedScene" uid="uid://baqa8owyy4lwj" path="res://scenes/component/hurtbox_component.tscn" id="15_cnkkm"]
+
+[sub_resource type="Animation" id="Animation_r73cc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ufqj7"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.0, 0.139626, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 9.84915, 1, 9.84915, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1), Vector2(1, 1), Vector2(1.2, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wc71"]
+_data = {
+"RESET": SubResource("Animation_r73cc"),
+"walk": SubResource("Animation_ufqj7")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27yav"]
+resource_local_to_scene = true
+shader = ExtResource("12_xs2oi")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00f2e"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhw7v"]
+radius = 9.0
+
+[node name="GhostEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 128
+collision_mask = 129
+motion_mode = 1
+script = ExtResource("1_6dvmi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6wc71")
+}
+autoplay = "walk"
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_4bvur")]
+streams = Array[AudioStream]([ExtResource("3_ilswg"), ExtResource("4_pmek3"), ExtResource("5_pi2cf"), ExtResource("6_y76ba"), ExtResource("7_8aqhx")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_bo584")]
+max_health = 30.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_t5a32")]
+drop_percent = 0.75
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("10_vdxwq")]
+max_speed = 90
+acceleration = 0.75
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_e0oab")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_27yav")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("13_6pnhl")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("14_x076f")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_00f2e")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("15_cnkkm")]
+visible = false
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_dhw7v")
