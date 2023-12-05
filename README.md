@@ -4,7 +4,7 @@
 
 <img src="./gladiator_enemies.png" alt="enemies" width="360">
 
-### Download game for your platform on [Itch.io](https://angelic-garbage.itch.io/richard-smiley-the-gladiator) or click [HERE](https://heidi-negrete.github.io/the-gladiator/) to play in browser! **(Browser build may not run on Mobile or Apple Devices)**
+### Play on [Itch.io](https://angelic-garbage.itch.io/richard-smiley-the-gladiator) (play in browser or download for your platform)! **(Browser build may not run on Mobile or Apple Devices)**
 
 ## Project Notes
 
