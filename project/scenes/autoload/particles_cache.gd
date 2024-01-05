@@ -12,6 +12,7 @@ var materials: Array = [
 func _ready():
 	for material in materials:
 		var particles_instance = GPUParticles2D.new()
+		particles_instance.global_position = Vector2(-100, -100)
 		particles_instance.set_process_material(material)
 		particles_instance.set_one_shot(true)
 		particles_instance.set_emitting(true)
