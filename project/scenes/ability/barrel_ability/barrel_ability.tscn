@@ -1,39 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpl5lte7botrg"]
+[gd_scene load_steps=10 format=3 uid="uid://dpl5lte7botrg"]
 
 [ext_resource type="Texture2D" uid="uid://dq520uluvtfuy" path="res://scenes/ability/barrel_ability/barrel.png" id="1_m0v3r"]
 [ext_resource type="Script" path="res://scenes/ability/barrel_ability/barrel_ability.gd" id="1_qkoxu"]
+[ext_resource type="Material" uid="uid://vx2f3cjv52s3" path="res://materials/barrel_ability.material" id="2_evydm"]
 [ext_resource type="PackedScene" uid="uid://csgitbiu5e2aw" path="res://scenes/component/hitbox_component.tscn" id="2_g2him"]
 [ext_resource type="Texture2D" uid="uid://devu860ge6ma6" path="res://assets/particle.png" id="4_5lbmm"]
-
-[sub_resource type="Gradient" id="Gradient_kxdif"]
-offsets = PackedFloat32Array(0, 0.606557)
-colors = PackedColorArray(0.262745, 0.262745, 0.262745, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_itbjg"]
-gradient = SubResource("Gradient_kxdif")
-
-[sub_resource type="Curve" id="Curve_o1ghs"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.146667, 1), 0.0, 0.0, 0, 0, Vector2(0.706667, 0.956044), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_2qthw"]
-curve = SubResource("Curve_o1ghs")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_coukv"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 6.0
-angle_max = 360.0
-spread = 180.0
-initial_velocity_min = 150.0
-initial_velocity_max = 250.0
-gravity = Vector3(0, 0, 0)
-damping_min = 600.0
-damping_max = 750.0
-scale_min = 0.5
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_2qthw")
-color_initial_ramp = SubResource("GradientTexture1D_itbjg")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pegx"]
 radius = 17.0225
@@ -193,7 +164,7 @@ script = ExtResource("1_qkoxu")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_coukv")
+process_material = ExtResource("2_evydm")
 texture = ExtResource("4_5lbmm")
 lifetime = 0.4
 one_shot = true
