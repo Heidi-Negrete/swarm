@@ -42,7 +42,7 @@ func _on_arena_time_manager_arena_difficulty_increased(arena_difficulty):
 		enemy_table.add_item(ghost_enemy_scene, 5)
 	
 	elif arena_difficulty == 6:
-		enemy_table.add_item(wizard_enemy_scene, 10)
+		enemy_table.add_item(wizard_enemy_scene, 2)
 
 
 func get_spawn_position():
