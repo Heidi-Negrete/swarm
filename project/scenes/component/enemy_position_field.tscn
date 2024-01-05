@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdw72fs63ttd4"]
+
+[ext_resource type="Script" path="res://scenes/component/enemy_position_field.gd" id="1_kwkmr"]
+
+[node name="EnemyPositionField" type="Node2D"]
+script = ExtResource("1_kwkmr")
+
+[node name="StartMarker" type="Marker2D" parent="."]
+
+[node name="TopRightMarker" type="Marker2D" parent="."]
+
+[node name="BottomLeftMarker" type="Marker2D" parent="."]
+
+[node name="EndMarker" type="Marker2D" parent="."]
